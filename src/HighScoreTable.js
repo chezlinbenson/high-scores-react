@@ -5,7 +5,7 @@ import scores from "./scores";
 
 const HighScoreTable = () => {
   scores.sort((a, b) => {
-    const nameA = a.name; // ignore upper and lowercase
+    const nameA = a.name;
     const nameB = b.name; // ignore upper and lowercase
     if (nameA < nameB) {
       return -1;
@@ -21,7 +21,7 @@ const HighScoreTable = () => {
   return (
     <div>
       {scores.map((country, index) => (
-        <div key={index}>
+        <div key={index} className="countryCard">
           <table className="table">
             <thead>
               <tr>
@@ -31,11 +31,13 @@ const HighScoreTable = () => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  <PlayerScore players={country.scores} />
-                </td>
-              </tr>
+              {country.scores
+                .sort((a, b) => b.s - a.s)
+                .map((player, index) => (
+                  <tr key={index} className="player-score">
+                    <PlayerScore player={player} />
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

@@ -1,14 +1,10 @@
 import React from "react";
 
-const PlayerScore = (props) => {
+const PlayerScore = ({player}) => {
   return (
-    <ul>
-      {props.players.map((player, index) => (
-        <li key={index} className="player-score">
-          {player.n} {player.s}
-        </li>
-      ))}
-    </ul>
+    <td>
+      {player.n} {player.s}
+    </td>
   );
 };
 export default PlayerScore;
