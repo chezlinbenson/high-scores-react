@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.sort-Button {
+  text-align: end;
+}
+
 .countryCard {
   background-color: whitesmoke;
   border-radius: 15px;

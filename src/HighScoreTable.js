@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import PlayerScore from "./PlayerScore";
-import allCountryScores from "./scores";
 import scores from "./scores";
 
 const HighScoreTable = () => {
+  const [status, setStatus] = useState(true);
+
   scores.sort((a, b) => {
     const nameA = a.name;
     const nameB = b.name; // ignore upper and lowercase
@@ -18,8 +19,26 @@ const HighScoreTable = () => {
     return 0;
   });
 
+  function sortData(countryPlayers) {
+    if (status) {
+      countryPlayers.sort((a, b) => b.s - a.s);
+      console.log("here");
+    } else {
+      countryPlayers.sort((a, b) => a.s - b.s);
+      console.log("there");
+    }
+    return countryPlayers;
+  }
+
+  function statusToggle() {
+    status ? setStatus(false) : setStatus(true);
+    scores.map((country, index) => sortData(country.scores));
+    console.log(status);
+  }
+
   return (
     <div>
+      <button onClick={statusToggle}>Sort Scores</button>
       {scores.map((country, index) => (
         <div key={index} className="countryCard">
           <table className="table">
@@ -31,13 +50,11 @@ const HighScoreTable = () => {
               </tr>
             </thead>
             <tbody>
-              {country.scores
-                .sort((a, b) => b.s - a.s)
-                .map((player, index) => (
-                  <tr key={index} className="player-score">
-                    <PlayerScore player={player} />
-                  </tr>
-                ))}
+              {sortData(country.scores).map((player, index) => (
+                <tr key={index} className="player-score">
+                  <PlayerScore player={player} />
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
