@@ -38,7 +38,9 @@ const HighScoreTable = () => {
 
   return (
     <div>
-      <button onClick={statusToggle}>Sort Scores</button>
+      <button onClick={statusToggle} className="sort-Button">
+        Sort Scores
+      </button>
       {scores.map((country, index) => (
         <div key={index} className="countryCard">
           <table className="table">

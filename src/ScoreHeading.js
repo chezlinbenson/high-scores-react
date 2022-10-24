@@ -1,9 +1,9 @@
 import React from "react";
 
-const ScoreHeading = () => {
+const ScoreHeading = ({ sectionHeading }) => {
   return (
     <div>
-      <h1>High Scores per Country</h1>;
+      <h1>{sectionHeading}</h1>
     </div>
   );
 };
