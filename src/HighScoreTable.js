@@ -32,7 +32,7 @@ const HighScoreTable = () => {
 
   function statusToggle() {
     status ? setStatus(false) : setStatus(true);
-    scores.map((country, index) => sortData(country.scores));
+    scores.map((country) => sortData(country.scores));
     console.log(status);
   }
 

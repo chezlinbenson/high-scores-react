@@ -1,6 +1,6 @@
 import React from "react";
 
-const PlayerScore = ({player}) => {
+const PlayerScore = ({ player }) => {
   return (
     <td>
       {player.n} {player.s}
